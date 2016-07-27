@@ -142,11 +142,13 @@ public class CurrentWeather {
         }
 
         else if (mIcon.equals("rain")) {
+            imageId = R.drawable.rain_wall;
 
             if (timeInHours >= 5 && timeInHours <= 18) {
                     imageId = R.drawable.rain_wall;
             } else {
-                if (timeInHours > 18 && timeInHours <= 4){
+                if ( (timeInHours > 18 && timeInHours <= 23)
+                        || (timeInHours >= 0 && timeInHours < 5) ) {
                     imageId = R.drawable.rainy_night_wall;
                 }
             }
