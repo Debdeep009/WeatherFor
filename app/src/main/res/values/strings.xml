@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WeatherFor</string>
+    <string name="error_title1">Sorry!</string>
+    <string name="error_message1">An error occurred, that is all we know</string>
+    <string name="error_ok_button_text">OK</string>
+    <string name="error_message2">Review the network settings!</string>
+    <string name="error_title2">Check!</string>
+    <string name="forecast_Uri">https://api.forecast.io/forecast/</string>
+    <string name="error_title3">Anomaly!</string>
+    <string name="error_message3">The network resource is unreachable, try again</string>
+</resources>
