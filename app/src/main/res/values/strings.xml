@@ -6,6 +6,11 @@
     <string name="error_message2">Review the network settings!</string>
     <string name="error_title2">Check!</string>
     <string name="forecast_Uri">https://api.forecast.io/forecast/</string>
-    <string name="error_title3">Anomaly!</string>
-    <string name="error_message3">The network resource is unreachable, try again</string>
+    <string name="error_title3">Unreachable!</string>
+    <string name="error_message3">Check your network settings and restart</string>
+    <string name="default_string_value">--</string>
+    <string name="retrieving_summary">Retrieving weather, please wait...</string>
+    <string name="rain_label">RAIN ?</string>
+    <string name="humidity_label">HUMIDITY</string>
+    <string name="default_time_label">...</string>
 </resources>

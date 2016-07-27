@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="--"
+        android:text="@string/default_string_value"
         android:id="@+id/temperatureLabel"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="..."
+        android:text="@string/default_time_label"
         android:id="@+id/timeLabel"
         android:layout_above="@+id/temperatureLabel"
         android:layout_centerHorizontal="true"
@@ -79,7 +79,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HUMIDITY"
+                android:text="@string/humidity_label"
                 android:id="@+id/humidityLabel"
                 android:textColor="#80FFFFFF"
                 android:gravity="center_horizontal" />
@@ -87,7 +87,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="--"
+                android:text="@string/default_string_value"
                 android:id="@+id/humidityValue"
                 android:linksClickable="true"
                 android:textColor="#ffffff"
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RAIN ?"
+                android:text="@string/rain_label"
                 android:id="@+id/precipLabel"
                 android:textColor="#80ffffff"
                 android:gravity="center_horizontal" />
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="--"
+                android:text="@string/default_string_value"
                 android:id="@+id/precipValue"
                 android:textColor="#FFFFFFFF"
                 android:textSize="24sp"
@@ -123,7 +123,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retrieving weather, please wait..."
+        android:text="@string/retrieving_summary"
         android:id="@+id/summaryLabel"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
@@ -138,7 +138,8 @@
         android:id="@+id/refreshImageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/refresh" />
+        android:src="@drawable/refresh"
+        android:layout_marginTop="10dp" />
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -148,6 +149,7 @@
         android:layout_centerHorizontal="true"
         android:mirrorForRtl="false"
         android:layout_alignBottom="@+id/refreshImageView"
-        android:indeterminate="false" />
+        android:indeterminate="false"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

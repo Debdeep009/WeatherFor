@@ -1,12 +1,10 @@
 package safacule.com.weatherfor;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    //private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
     private CurrentWeather mCurrentWeather;
 
     // Using the ButterKnife for reducing boilerplate code
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.iconImageView) ImageView mIconImageView;
     @BindView(R.id.temperatureLabel) TextView mTemperatureLabel;
     @BindView(R.id.parentLayout) RelativeLayout mRelativeLayout;
-
     @BindView(R.id.refreshImageView) ImageView mRefreshImageView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getForecast(double latitude, double longitude) {
 
-        String apiKey = "6b732233eaffc14536db3d63a83d494e";
+        String apiKey = "4f9fd5b1cf034d775d5d2daf804cdf26";
         String forecastUrl = getString(R.string.forecast_Uri) + apiKey +
                 "/" + latitude + "," + longitude;
 
@@ -79,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
                     toggleRefresh();
                 }
             });
+
             OkHttpClient client = new OkHttpClient();
+
             Request request = new Request.Builder()
                     .url(forecastUrl)
                     .build();
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                     try {
                         String jsonData = response.body().string();
-                        //Log.v(TAG, jsonData);
+                        Log.v(TAG, jsonData);
 
                         if (response.isSuccessful()) {
                             mCurrentWeather = getCurrentDetails(jsonData);
@@ -184,10 +184,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = manager.getActiveNetworkInfo();
-            isAvailable = false;
-            if (networkInfo != null &&  networkInfo.isConnected()) {
-                isAvailable = true;
-            }
+            isAvailable = networkInfo != null && networkInfo.isConnected();
         } catch (Exception e) {
             //e.printStackTrace();
         }

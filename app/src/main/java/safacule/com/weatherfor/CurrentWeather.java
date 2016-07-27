@@ -1,11 +1,12 @@
 package safacule.com.weatherfor;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
 /**
- * Created by Debde_000 on 24-07-2016.
+ * Created by Debdeep on 24-07-2016.
  */
 public class CurrentWeather {
     private String mIcon;
@@ -82,8 +83,8 @@ public class CurrentWeather {
     }
 
     public int getmTemperature() {
-//        return (((((int) Math.round(mTemperature))-32)/9)*5) ;
-            return (int) Math.round(mTemperature);
+        return (int) Math.round( ( (mTemperature-32)/9 ) * 5 ) ;
+//            return (int) Math.round(mTemperature);
     }   //  ;p :D
 
     public void setmTemperature(double mTemperature) {
@@ -108,6 +109,7 @@ public class CurrentWeather {
     }
 
     public int getmPrecipChance() {
+
         double precipPercentage = mPrecipChance*100;
         return (int) Math.round(precipPercentage);
     }
@@ -127,6 +129,9 @@ public class CurrentWeather {
 
     public int getImageId() {
 
+        Calendar calendarInstance = Calendar.getInstance();
+        int timeInHours = calendarInstance.get(Calendar.HOUR_OF_DAY);
+
          int imageId = R.drawable.clear_day_wall;
 
         if (mIcon.equals("clear-day")) {
@@ -135,9 +140,18 @@ public class CurrentWeather {
         else if (mIcon.equals("clear-night")) {
             imageId = R.drawable.clear_night_wall;
         }
+
         else if (mIcon.equals("rain")) {
-            imageId = R.drawable.rain_wall;
+
+            if (timeInHours >= 5 && timeInHours <= 18) {
+                    imageId = R.drawable.rain_wall;
+            } else {
+                if (timeInHours > 18 && timeInHours <= 4){
+                    imageId = R.drawable.rainy_night_wall;
+                }
+            }
         }
+
         else if (mIcon.equals("snow")) {
             imageId = R.drawable.snow_wall;
         }
